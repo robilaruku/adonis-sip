@@ -1,0 +1,41 @@
+@layout('admin.template.admin')
+@yield('content')
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">
+              Categories
+          </h3>
+          <div class="float-right card-tool ">
+              <a href="{{ route('categories.create') }}" class="btn btn-tool"><i class="fa fa-plus"></i> Add Category</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <table class="table table-head-fixed text-nowrap">
+            <thead>
+              <tr>
+                <th>NO</th>
+                <th>Name</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+                @each(category in categories)
+                  <tr>
+                    <td>{{ $loop.index + 1 }}</td>
+                    <td>{{ category.name }}</td>
+                    @if(category.status == 'Active')
+                      <td><span class="badge badge-pill badge-success">{{ category.status }}</span></td>
+                    @else
+                      <td><span class="badge badge-pill badge-danger">{{ category.status }}</span></td>
+                    @endif
+                  </tr>
+                @endeach
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+@endyield
