@@ -4,7 +4,7 @@ const Category = use('App/Models/Category')
 
 class CategoryController {
 
-    async index({ view, session }) {
+    async index({ view }) {
         const categories = await Category.query().orderBy('created_at', 'desc').fetch()
         return view.render('admin.categories.index', { categories: categories.rows })
     }
@@ -22,7 +22,7 @@ class CategoryController {
         return response.route('categories.index')
     }
 
-    async edit({ view, params, session }) {
+    async show({ view, session, params, response }) {
         const id = params.id
         const category = await Category.find(id)
 
@@ -30,6 +30,20 @@ class CategoryController {
             session.flash({ errors: 'Data Not Found' });
             return response.route('categories.index')
         }
+
+        return view.render('admin.categories.edit', { category: category });
+    }
+
+    async edit({ view, params, session, response }) {
+        const id = params.id
+        const category = await Category.find(id)
+
+        if (category == null) {
+            session.flash({ errors: 'Data Not Found' });
+            return response.route('categories.index')
+        }
+
+        return view.render('admin.categories.edit', { category: category });
 
     }
 

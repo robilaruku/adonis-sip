@@ -13,10 +13,10 @@
         </div>
         <div class="card-body">
           @if(flashMessage('notification'))
-            <div class="alert alert-success">{{ flashMessage('notification') }}</div>
+            @include('admin.flashs.success')
           @endif
           @if(flashMessage('errors'))
-          <div class="alert alert-danger">{{ flashMessage('errors') }}</div>
+            @include('admin.flashs.errors')
           @endif
           <table class="table table-head-fixed text-nowrap">
             <thead>
@@ -24,6 +24,7 @@
                 <th>NO</th>
                 <th>Name</th>
                 <th>Status</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -36,6 +37,13 @@
                     @else
                       <td><span class="badge badge-pill badge-danger">{{ category.status }}</span></td>
                     @endif
+                    <td>
+                      <div class="btn-group" role="group" aria-label="Button group">
+                        <a href="" class="btn btn-sm btn-info" style="color: #fff"><i class="fa fa-eye"></i></a>
+                        <a href="{{ route('categories.edit', {id : category.id}) }}" class="btn btn-sm btn-warning" style="color: #fff"><i class="fa fa-edit"></i></a>
+                        <a href="" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure ?')"><i class="fa fa-trash"></i></a>
+                      </div>
+                    </td>
                   </tr>
                 @endeach
             </tbody>
