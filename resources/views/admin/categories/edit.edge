@@ -8,7 +8,7 @@
                Edit Category
             </h3>
          </div>
-         <form action="" method="post">
+         <form action="{{ route('categories.update', {id : category.id}) }}" method="post">
             {{ csrfField() }}
             <div class="card-body">
                <div class="form-group">

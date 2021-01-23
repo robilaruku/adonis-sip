@@ -36,7 +36,7 @@
                       <div class="btn-group" role="group" aria-label="Button group">
                         <a href="{{ route('categories.show', {id : category.id}) }}" class="btn btn-sm btn-info" style="color: #fff"><i class="fa fa-eye"></i></a>
                         <a href="{{ route('categories.edit', {id : category.id}) }}" class="btn btn-sm btn-warning" style="color: #fff"><i class="fa fa-edit"></i></a>
-                        <a href="" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure ?')"><i class="fa fa-trash"></i></a>
+                        <a href="{{  route('categories.destroy', {id : category.id})  }}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure ?')"><i class="fa fa-trash"></i></a>
                       </div>
                     </td>
                   </tr>

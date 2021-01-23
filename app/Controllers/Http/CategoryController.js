@@ -14,12 +14,18 @@ class CategoryController {
     }
 
     async store({ request, response, session }) {
-        const category = request.only(['name', 'status'])
+        try {
+            const category = request.only(['name', 'status'])
 
-        await Category.create(category)
+            await Category.create(category)
 
-        session.flash({ messages: 'Successfully create!' });
-        return response.route('categories.index')
+            session.flash({ messages: 'Successfully create!' });
+            return response.route('categories.index')
+
+        } catch (error) {
+            session.flash({ errors: 'Errors' });
+            return response.route('categories.index')
+        }
     }
 
     async show({ view, session, params, response }) {
@@ -44,6 +50,51 @@ class CategoryController {
         }
 
         return view.render('admin.categories.edit', { category: category });
+
+    }
+
+    async update({ response, request, params, session }) {
+        try {
+            const id = params.id
+            const category = await Category.find(id)
+
+            if (category == null) {
+                session.flash({ errors: 'Data Not Found' });
+                return response.route('categories.index')
+            }
+
+            const data = request.only(['name', 'status'])
+
+            category.merge(data)
+
+            await category.save()
+
+            session.flash({ messages: 'Successfully updated!' });
+            return response.route('categories.index')
+        } catch (error) {
+            session.flash({ errors: 'Errors' });
+            return response.route('categories.index')
+        }
+    }
+
+    async destroy({ request, response, view, params, session }) {
+        try {
+            const id = params.id;
+            const category = await Category.find(id);
+
+            if (category == null) {
+                session.flash({ errors: 'Data Not Found' });
+                return response.route('categories.index')
+            }
+
+            await category.delete();
+
+            session.flash({ messages: 'Successfully delete!' });
+            return response.route('categories.index')
+        } catch (error) {
+            session.flash({ errors: 'Errors' });
+            return response.route('categories.index')
+        }
 
     }
 

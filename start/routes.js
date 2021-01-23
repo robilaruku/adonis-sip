@@ -24,3 +24,5 @@ Route.get('admin/categories/create', 'CategoryController.create').as('categories
 Route.post('admin/categories/store', 'CategoryController.store').as('categories.store').validator('CategoryStore')
 Route.get('admin/categories/:id/edit', 'CategoryController.edit').as('categories.edit')
 Route.get('admin/categories/:id/show', 'CategoryController.show').as('categories.show')
+Route.post('admin/categories/:id/update', 'CategoryController.update').as('categories.update').validator('CategoryUpdate')
+Route.get('admin/categories/:id/destroy', 'CategoryController.destroy').as('categories.destroy')
