@@ -12,12 +12,7 @@
           </div>
         </div>
         <div class="card-body">
-          @if(flashMessage('notification'))
-            @include('admin.flashs.success')
-          @endif
-          @if(flashMessage('errors'))
-            @include('admin.flashs.errors')
-          @endif
+          @include('admin.flash.message')
           <table class="table table-head-fixed text-nowrap">
             <thead>
               <tr>

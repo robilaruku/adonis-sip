@@ -18,7 +18,7 @@ class CategoryController {
 
         await Category.create(category)
 
-        session.flash({ notification: 'Successfully create!' });
+        session.flash({ messages: 'Successfully create!' });
         return response.route('categories.index')
     }
 
