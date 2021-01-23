@@ -143,7 +143,7 @@
     haye "^2.0.1"
     lodash "^4.17.5"
 
-"@adonisjs/session@^1.0.27":
+"@adonisjs/session@^1.0.29":
   version "1.0.29"
   resolved "https://registry.yarnpkg.com/@adonisjs/session/-/session-1.0.29.tgz#4f397d28afe2c20ba88b1c1d431c56b783461ed6"
   integrity sha512-dr8P/WUrt50uLZt5SZ8C1uhp4FXzGPh1dNUeS0Lur95ftzHri6S+suBXQ4DM+sNiZQn7iaVylYwsFqUlOkp8gQ==

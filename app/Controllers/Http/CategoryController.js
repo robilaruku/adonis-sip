@@ -1,11 +1,10 @@
 'use strict'
 
 const Category = use('App/Models/Category')
-const Database = use('Database')
 
 class CategoryController {
 
-    async index({ view }) {
+    async index({ view, session }) {
         const categories = await Category.query().orderBy('created_at', 'desc').fetch()
         return view.render('admin.categories.index', { categories: categories.rows })
     }
@@ -19,8 +18,19 @@ class CategoryController {
 
         await Category.create(category)
 
-        session.flash({ messages: 'Successfully create!' });
+        session.flash({ notification: 'Successfully create!' });
         return response.route('categories.index')
+    }
+
+    async edit({ view, params, session }) {
+        const id = params.id
+        const category = await Category.find(id)
+
+        if (category == null) {
+            session.flash({ errors: 'Data Not Found' });
+            return response.route('categories.index')
+        }
+
     }
 
 }

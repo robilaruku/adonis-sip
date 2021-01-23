@@ -12,6 +12,12 @@
           </div>
         </div>
         <div class="card-body">
+          @if(flashMessage('notification'))
+            <div class="alert alert-success">{{ flashMessage('notification') }}</div>
+          @endif
+          @if(flashMessage('errors'))
+          <div class="alert alert-danger">{{ flashMessage('errors') }}</div>
+          @endif
           <table class="table table-head-fixed text-nowrap">
             <thead>
               <tr>
