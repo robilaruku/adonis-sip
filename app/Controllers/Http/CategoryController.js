@@ -23,7 +23,7 @@ class CategoryController {
             return response.route('categories.index')
 
         } catch (error) {
-            session.flash({ errors: 'Errors' });
+            session.flash({ errors: 'Errors Store Data' });
             return response.route('categories.index')
         }
     }
@@ -72,7 +72,7 @@ class CategoryController {
             session.flash({ messages: 'Successfully updated!' });
             return response.route('categories.index')
         } catch (error) {
-            session.flash({ errors: 'Errors' });
+            session.flash({ errors: 'Errors Update Data' });
             return response.route('categories.index')
         }
     }
@@ -92,7 +92,7 @@ class CategoryController {
             session.flash({ messages: 'Successfully delete!' });
             return response.route('categories.index')
         } catch (error) {
-            session.flash({ errors: 'Errors' });
+            session.flash({ errors: 'Errors Delete Data' });
             return response.route('categories.index')
         }
 
