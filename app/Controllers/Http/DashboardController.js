@@ -2,7 +2,7 @@
 
 class DashboardController {
 
-    index({ view, request }) {
+    index({ view }) {
         return view.render('admin.dashboard')
     }
 

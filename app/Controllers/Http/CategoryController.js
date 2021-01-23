@@ -31,7 +31,7 @@ class CategoryController {
             return response.route('categories.index')
         }
 
-        return view.render('admin.categories.edit', { category: category });
+        return view.render('admin.categories.show', { category: category });
     }
 
     async edit({ view, params, session, response }) {
