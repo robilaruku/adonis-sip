@@ -16,7 +16,11 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('welcome')
+Route.route('/', ({ response }) => {
+    return response.route('admin')
+}, ['GET'])
+
+
 
 Route.get('admin', 'DashboardController.index').as('admin')
 Route.get('admin/categories', 'CategoryController.index').as('categories.index')
