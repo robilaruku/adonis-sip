@@ -21,7 +21,6 @@ Route.route('/', ({ response }) => {
 }, ['GET'])
 
 
-
 Route.get('admin', 'DashboardController.index').as('admin')
 Route.get('admin/categories', 'CategoryController.index').as('categories.index')
 Route.get('admin/categories/create', 'CategoryController.create').as('categories.create')
@@ -30,3 +29,5 @@ Route.get('admin/categories/:id/edit', 'CategoryController.edit').as('categories
 Route.get('admin/categories/:id/show', 'CategoryController.show').as('categories.show')
 Route.post('admin/categories/:id/update', 'CategoryController.update').as('categories.update').validator('CategoryUpdate')
 Route.get('admin/categories/:id/destroy', 'CategoryController.destroy').as('categories.destroy')
+
+Route.resource('admin/products', 'ProductController')

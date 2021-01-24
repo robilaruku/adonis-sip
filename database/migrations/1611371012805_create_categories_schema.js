@@ -14,7 +14,7 @@ class CreateCategoriesSchema extends Schema {
     }
 
     down() {
-        this.drop('create_categories')
+        this.drop('categories')
     }
 }
 
